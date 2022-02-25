@@ -1,0 +1,8 @@
+generic_renovate_platform: "bitbucket-server"
+generic_renovate_endpoint: "https://bitbucket.valtech.de/bb"
+generic_renovate_git_fs: "http"
+generic_renovate_autodiscover: "true"
+generic_renovate_ticket_number: ""
+generic_renovate_branch_prefix: "feature/"
+generic_renovate_onboarding_branch: "feature/configure-renovate"
+generic_renovate_automerge: "false"

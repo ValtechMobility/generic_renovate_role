@@ -1,0 +1,18 @@
+galaxy_info:
+  role_name: generic_renovate_role
+  description: A role to install Renovate
+  author: Valtech Mobility
+  company: Valtech Mobility
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - ">= 18.04"
+
+  galaxy_tags:
+    - renovate
+    - ubuntu
+
+dependencies: []
