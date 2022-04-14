@@ -1,18 +1,21 @@
-----
+---
 - name: Create Renovate Cron Job to start Docker Container
   ansible.builtin.cron:
-    name: "renovate docker"
+    name: "{{ generic_renovate_cron_name }}"
     minute: "0"
-    hour: "0"
+    hour: "{{ generic_renovate_cron_hour }}"
+    weekday: "{{ generic_renovate_cron_weekday }}"
+    user: "{{ generic_renovate_cron_user }}"
+    state: present
     job: "docker run --rm \
-     -e RENOVATE_PLATFORM={{ renovate_platform }} \
-     -e RENOVATE_ENDPOINT={{ renovate_endpoint }} \
-     -e RENOVATE_GIT_FS={{ renovate_git_fs }} \
-     -e RENOVATE_USERNAME={{ renovate_username }} \
-     -e RENOVATE_PASSWORD={{ renovate_password }} \
-     -e RENOVATE_AUTODISCOVER={{ renovate_autodiscover }} \
-     -e RENOVATE_COMMIT_MESSAGE=\"{{ renovate_ticket_number }} {{ '{{' }}commitMessagePrefix{{ '}}' }} {{ '{{' }}commitMessageAction{{ '}}' }} {{ '{{' }}commitMessageTopic{{ '}}' }} {{ '{{' }}commitMessageExtra{{ '}}' }} {{ '{{' }}commitMessageSuffix{{ '}}' }}\" \
-     -e RENOVATE_ONBOARDING_COMMIT_MESSAGE=\"{{ renovate_ticket_number }} Add renovate.json\" \
-     -e RENOVATE_BRANCH_PREFIX=\"{{ renovate_branch_prefix }}\" \
-     -e RENOVATE_ONBOARDING_BRANCH=\"{{ renovate_onboarding_branch }}\" \
-     -e RENOVATE_AUTOMERGE=\"{{ renovate_automerge }}\" renovate/renovate:29.18.1"
+     -e RENOVATE_PLATFORM={{ generic_renovate_platform }} \
+     -e RENOVATE_ENDPOINT={{ generic_renovate_endpoint }} \
+     -e RENOVATE_GIT_FS={{ generic_renovate_git_fs }} \
+     -e RENOVATE_USERNAME={{ generic_renovate_username }} \
+     -e RENOVATE_PASSWORD={{ generic_renovate_password }} \
+     -e RENOVATE_AUTODISCOVER={{ generic_renovate_autodiscover }} \
+     -e RENOVATE_COMMIT_MESSAGE=\"{{ generic_renovate_ticket_number }} {{ '{{' }}commitMessagePrefix{{ '}}' }} {{ '{{' }}commitMessageAction{{ '}}' }} {{ '{{' }}commitMessageTopic{{ '}}' }} {{ '{{' }}commitMessageExtra{{ '}}' }} {{ '{{' }}commitMessageSuffix{{ '}}' }}\" \
+     -e RENOVATE_ONBOARDING_COMMIT_MESSAGE=\"{{ generic_renovate_ticket_number }} Add renovate.json\" \
+     -e RENOVATE_BRANCH_PREFIX=\"{{ generic_renovate_branch_prefix }}\" \
+     -e RENOVATE_ONBOARDING_BRANCH=\"{{ generic_renovate_onboarding_branch }}\" \
+     -e RENOVATE_AUTOMERGE=\"{{ generic_renovate_automerge }}\" {{ generic_renovate_image }}"

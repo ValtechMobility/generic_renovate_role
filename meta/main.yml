@@ -1,8 +1,10 @@
 galaxy_info:
   role_name: generic_renovate_role
-  description: A role to install Renovate
+  description: A role to create a cronjob to periodically run renovate in a docker container.
   author: Valtech Mobility
   company: Valtech Mobility
+
+  issue_tracker_url: https://github.com/ValtechMobility/generic_renovate_role/issues
 
   min_ansible_version: 2.9
 
@@ -13,6 +15,7 @@ galaxy_info:
 
   galaxy_tags:
     - renovate
+    - docker
     - ubuntu
 
 dependencies: []
